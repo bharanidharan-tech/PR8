@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CampusVibe - College Event Portal</title>
+
+    <style>
+        /* UNIVERSAL STYLING */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* MAIN WEBSITE STYLING */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7ff;
+            color: #252744;
+        }
+
+        /* WEBSITE HEADER */
+        .website-header {
+            background-color: #171b42;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .website-header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .website-header p {
+            color: #cbd5ff;
+        }
+
+        /* NAVIGATION BAR */
+        .navigation-bar {
+            background-color: #292f68;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .navigation-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        .navigation-bar a:hover {
+            color: #a5b4fc;
+        }
+
+        /* INTRODUCTION SECTION */
+        .introduction-section {
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .introduction-section h2 {
+            font-size: 32px;
+            color: #292f68;
+        }
+
+        .introduction-section p {
+            font-size: 17px;
+        }
+
+        /* EVENT STATISTICS */
+        .event-statistics {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .statistics-item {
+            text-align: center;
+        }
+
+        .statistics-item h2 {
+            color: #4f46e5;
+            margin-bottom: 5px;
+        }
+
+        /* EVENT GALLERY */
+        .event-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* EVENT CARD STYLING */
+        .event-card {
+            background-color: white;
+            border: 1px solid #e0e4f5;
+            border-radius: 12px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 3px 10px #0002;
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* EVENT ICON */
+        .event-icon {
+            padding: 35px 10px;
+            font-size: 65px;
+        }
+
+        /* EVENT BACKGROUND COLORS */
+        .technical-background {
+            background-color: #dbeafe;
+        }
+
+        .cultural-background {
+            background-color: #fce7f3;
+        }
+
+        .sports-background {
+            background-color: #dcfce7;
+        }
+
+        .workshop-background {
+            background-color: #fef3c7;
+        }
+
+        .arts-background {
+            background-color: #ede9fe;
+        }
+
+        .event-card h3 {
+            color: #292f68;
+            margin: 15px 5px 10px;
+        }
+
+        .event-card p {
+            padding: 0 15px 20px;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* SECTION HEADING */
+        .section-heading {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .section-heading h2 {
+            color: #292f68;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background-color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 30px;
+        }
+
+        .about-section h2 {
+            color: #292f68;
+        }
+
+        .about-section p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .contact-section h2 {
+            color: #292f68;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .contact-button:hover {
+            background-color: #3730a3;
+        }
+
+        /* DESKTOP SCREEN */
+        @media screen and (min-width: 901px) {
+            .event-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* TABLET SCREEN */
+        @media screen and (max-width: 900px) {
+            body {
+                background-color: #eef2ff;
+            }
+
+            .event-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .website-header h1 {
+                font-size: 30px;
+            }
+
+            .introduction-section h2 {
+                font-size: 27px;
+            }
+        }
+
+        /* MOBILE SCREEN */
+        @media screen and (max-width: 500px) {
+            body {
+                background-color: #f5f3ff;
+            }
+
+            .event-gallery {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 18px;
+            }
+
+            .website-header {
+                padding: 18px 10px;
+            }
+
+            .website-header h1 {
+                font-size: 25px;
+            }
+
+            .navigation-bar {
+                padding: 12px 5px;
+            }
+
+            .navigation-bar a {
+                display: inline-block;
+                margin: 7px;
+                font-size: 13px;
+            }
+
+            .introduction-section {
+                padding: 25px 15px;
+            }
+
+            .introduction-section h2 {
+                font-size: 24px;
+            }
+
+            .event-icon {
+                font-size: 55px;
+            }
+
+            .event-statistics {
+                gap: 20px;
+            }
+        }
+
+        /* WEBSITE FOOTER */
+        .website-footer {
+            background-color: #171b42;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .website-footer h3 {
+            color: #a5b4fc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- WEBSITE HEADER -->
+    <header class="website-header" id="home">
+        <h1>CampusVibe</h1>
+        <p>Where Campus Life Comes Alive</p>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navigation-bar">
+        <a href="#home">HOME</a>
+        <a href="#events">EVENTS</a>
+        <a href="#categories">CATEGORIES</a>
+        <a href="#about">ABOUT US</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <!-- INTRODUCTION SECTION -->
+    <section class="introduction-section">
+        <h2>Where Campus Life Comes Alive.</h2>
+
+        <p>
+            Discover exciting events, unleash your talent,
+            and create unforgettable college memories.
+        </p>
+    </section>
+
+    <!-- EVENT STATISTICS -->
+    <section class="event-statistics">
+
+        <div class="statistics-item">
+            <h2>50+</h2>
+            <p>Events</p>
+        </div>
+
+        <div class="statistics-item">
+            <h2>5K+</h2>
+            <p>Students</p>
+        </div>
+
+        <div class="statistics-item">
+            <h2>20+</h2>
+            <p>Clubs</p>
+        </div>
+
+    </section>
+
+    <!-- FEATURED EVENTS -->
+    <section class="section-heading" id="events">
+        <h2>Featured Events</h2>
+        <p>
+            Hand-picked events you don't want
+            to miss this semester.
+        </p>
+    </section>
+
+    <!-- EVENT CATEGORIES -->
+    <section class="section-heading" id="categories">
+        <h2>Event Categories</h2>
+        <p>Explore exciting college activities.</p>
+    </section>
+
+    <!-- RESPONSIVE EVENT GALLERY -->
+    <section class="event-gallery">
+
+        <!-- TECHNICAL EVENTS -->
+        <article class="event-card">
+            <div class="event-icon technical-background">
+                💻
+            </div>
+
+            <h3>Technical Events</h3>
+
+            <p>
+                Symposiums, coding contests,
+                and hackathons.
+            </p>
+        </article>
+
+        <!-- CULTURAL EVENTS -->
+        <article class="event-card">
+            <div class="event-icon cultural-background">
+                🎭
+            </div>
+
+            <h3>Cultural Events</h3>
+
+            <p>
+                Dance, music, drama,
+                and college festivals.
+            </p>
+        </article>
+
+        <!-- SPORTS EVENTS -->
+        <article class="event-card">
+            <div class="event-icon sports-background">
+                🏆
+            </div>
+
+            <h3>Sports Events</h3>
+
+            <p>
+                Sports tournaments
+                and championships.
+            </p>
+        </article>
+
+        <!-- WORKSHOPS -->
+        <article class="event-card">
+            <div class="event-icon workshop-background">
+                🛠️
+            </div>
+
+            <h3>Workshops</h3>
+
+            <p>
+                Hands-on learning sessions
+                and skill development.
+            </p>
+        </article>
+
+        <!-- ARTS AND PHOTOGRAPHY -->
+        <article class="event-card">
+            <div class="event-icon arts-background">
+                🎨
+            </div>
+
+            <h3>Arts & Photography</h3>
+
+            <p>
+                Creative competitions,
+                exhibitions, and photography.
+            </p>
+        </article>
+
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section class="about-section" id="about">
+
+        <h2>Your One-Stop Portal for Campus Life</h2>
+
+        <p>
+            CampusVibe helps students discover
+            every activity happening across the college.
+
+            From technical symposiums to cultural
+            nights and sports meets, students can
+            explore events in one place.
+        </p>
+
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+
+        <h2>Let's Talk</h2>
+
+        <p>
+            Have a question about an event
+            or want to host one?
+        </p>
+
+        <form class="contact-form"
+              onsubmit="handleContactForm(event)">
+
+            <input type="text"
+                   placeholder="Your Name"
+                   required>
+
+            <input type="email"
+                   placeholder="Your Email"
+                   required>
+
+            <input type="text"
+                   placeholder="Subject"
+                   required>
+
+            <textarea rows="5"
+                      placeholder="Your Message"
+                      required></textarea>
+
+            <button type="submit"
+                    class="contact-button">
+                Send Message
+            </button>
+
+            <p id="formStatus" role="status"></p>
+
+        </form>
+
+    </section>
+
+    <!-- WEBSITE FOOTER -->
+    <footer class="website-footer">
+
+        <h3>CampusVibe</h3>
+
+        <p>
+            Where campus life comes alive.
+            Discover, participate and celebrate.
+        </p>
+
+        <p>
+            © 2026 CampusVibe.
+            Web Technology Micro-Project.
+        </p>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function handleContactForm(submissionEvent) {
+
+            submissionEvent.preventDefault();
+
+            const contactForm =
+                submissionEvent.currentTarget;
+
+            const formStatusMessage =
+                document.getElementById("formStatus");
+
+            formStatusMessage.textContent =
+                "Demo form submitted. " +
+                "No message has been sent.";
+
+            contactForm.reset();
+        }
+    </script>
+
+</body>
+</html>
